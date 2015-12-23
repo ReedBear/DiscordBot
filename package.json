@@ -5,6 +5,9 @@
   "readme": "README.md",
   "maintainers": [
   ],
+  "scripts": {
+    "start": "node discord_bot.js"
+  },
   "author": "",
   "repository": {
     "type": "git",
