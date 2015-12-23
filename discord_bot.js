@@ -26,7 +26,7 @@ try {
 }
 
 // Get the email and password
-var AuthDetails = require("./auth.json");
+var AuthDetails = require("./auth.js");
 
 var Permissions = {};
 try{
