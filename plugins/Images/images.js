@@ -1,5 +1,5 @@
 var request = require("request");
-var AuthDetails = require("../../auth.json");
+var AuthDetails = require("../../auth.js");
 
 exports.commands = [
 	"image", //gives random image from google search
@@ -67,6 +67,6 @@ exports.ggif = {
 			var randResult = data.items[Math.floor(Math.random() * data.items.length)];
 			bot.sendMessage(msg.channel, randResult.title + '\n' + randResult.link);
 		});
-		
+
 	}
 }

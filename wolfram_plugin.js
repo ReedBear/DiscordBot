@@ -1,7 +1,7 @@
 var util = require('util');
 var winston = require('winston');
 var wolfram_node = require('wolfram');
-var AuthDetails = require("./auth.json");
+var AuthDetails = require("./auth.js");
 
 
 function WolframPlugin () {
@@ -25,7 +25,7 @@ WolframPlugin.prototype.respond = function (query, channel, bot) {
 				for(var n = 0; n < result.length; n++){
 					if("image" in result[n].subpods[0]) {bot.sendMessage(channel, result[n].title + ": " + result[n].subpods[0].image + ".gif");}
 				}
-				
+
 			}
 		});
 
