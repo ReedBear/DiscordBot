@@ -11,7 +11,7 @@ try {
 }
 
 // Get the email and password
-var AuthDetails = require("./auth.json");
+var AuthDetails = require("./auth.js");
 
 var Permissions = {};
 try{
@@ -331,7 +331,7 @@ var commands = {
                     //bot.sendMessage(msg.channel,JSON.stringify(snapshot));
                     bot.sendMessage(msg.channel,snapshot.name
                         + "\nprice: $" + snapshot.lastTradePriceOnly);
-                }  
+                }
             });
         }
     },
@@ -573,7 +573,7 @@ bot.on("disconnected", function () {
 
 	console.log("Disconnected!");
 	process.exit(1); //exit node.js with an error
-	
+
 });
 
 bot.on("message", function (msg) {
@@ -620,7 +620,7 @@ bot.on("message", function (msg) {
 	    	} catch(e){
 			bot.sendMessage(msg.channel, "command " + cmdTxt + " failed :(\n" + e.stack);
 		}
-            //if ("process" in cmd ){ 
+            //if ("process" in cmd ){
 			//	cmd.process(bot,msg,suffix);
 			//}
 		} else {
@@ -632,13 +632,13 @@ bot.on("message", function (msg) {
         if(msg.author == bot.user){
             return;
         }
-        
+
         if (msg.author != bot.user && msg.isMentioned(bot.user)) {
                 bot.sendMessage(msg.channel,msg.author + ", you called?");
         }
     }
 });
- 
+
 
 //Log user status changes
 bot.on("presence", function(user,status,gameId) {
