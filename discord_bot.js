@@ -3,6 +3,20 @@ var Discord = require("discord.js");
 var yt = require("./youtube_plugin");
 var Imgur = require('imgur-search');
 var youtube_plugin = new yt();
+var http = require("http");
+
+setInterval(function() {
+    http.get("http://cotobot.herokuapp.com");
+}, 300000);
+
+var port = process.env.PORT || 8080;
+var server = http.createServer(function (req, res) {
+    res.end('OK');
+});
+server.listen(port, function(){
+    console.log("Server listening on : ", port);
+});
+
 
 try {
 	var wa = require("./wolfram_plugin");
@@ -97,7 +111,7 @@ var commands = {
             });
 
         }
-    }
+    },
     "ping": {
         description: "responds pong, useful for checking if bot is alive",
         process: function(bot, msg, suffix) {
@@ -347,7 +361,7 @@ var commands = {
                     //bot.sendMessage(msg.channel,JSON.stringify(snapshot));
                     bot.sendMessage(msg.channel,snapshot.name
                         + "\nprice: $" + snapshot.lastTradePriceOnly);
-                }  
+                }
             });
         }
     },
@@ -589,7 +603,7 @@ bot.on("disconnected", function () {
 
 	console.log("Disconnected!");
 	process.exit(1); //exit node.js with an error
-	
+
 });
 
 bot.on("message", function (msg) {
@@ -636,7 +650,7 @@ bot.on("message", function (msg) {
 	    	} catch(e){
 			bot.sendMessage(msg.channel, "command " + cmdTxt + " failed :(\n" + e.stack);
 		}
-            //if ("process" in cmd ){ 
+            //if ("process" in cmd ){
 			//	cmd.process(bot,msg,suffix);
 			//}
 		} else {
@@ -648,13 +662,13 @@ bot.on("message", function (msg) {
         if(msg.author == bot.user){
             return;
         }
-        
+
         if (msg.author != bot.user && msg.isMentioned(bot.user)) {
                 bot.sendMessage(msg.channel,msg.author + ", you called?");
         }
     }
 });
- 
+
 
 //Log user status changes
 bot.on("presence", function(user,status,gameId) {
