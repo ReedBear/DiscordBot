@@ -1,6 +1,7 @@
 var Discord = require("discord.js");
 
 var yt = require("./youtube_plugin");
+var Imgur = require('imgur-search');
 var youtube_plugin = new yt();
 
 try {
@@ -46,6 +47,7 @@ var config = {
     "permission": ["NORMAL"]
 };
 
+var imgur = new Imgur(AuthDetails.imgur_client_id);
 
 //https://api.imgflip.com/popular_meme_ids
 var meme = {
@@ -82,6 +84,20 @@ var commands = {
 		    });
 		}
 	},
+    "imgur": {
+        usage: "<search>",
+        description: "Returns viral images related to search from imgur",
+        process: function (bot, msg, suffix) {
+
+            var search = suffix;
+            imgur.getRandomFromSearch(search).always(function (resp) {
+
+                bot.sendMessage(msg.channel, resp.link);
+
+            });
+
+        }
+    }
     "ping": {
         description: "responds pong, useful for checking if bot is alive",
         process: function(bot, msg, suffix) {

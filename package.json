@@ -26,9 +26,11 @@
     , "google-images": "0.1.x"
     , "imgflipper": "*"
     , "wikijs": "*"
+    , "imgur-search": "*"
     , "yahoo-finance": "*"
     , "feedparser": "*"
     , "html-to-text": "*"
+    , "cleverbot-node": "*"
   },
   "main": "discord_bot.js"
 }
